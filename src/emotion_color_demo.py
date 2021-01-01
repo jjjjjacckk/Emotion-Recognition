@@ -24,6 +24,9 @@ emotion_offsets = (20, 40)
 
 # loading models
 face_detection = load_detection_model(detection_model_path)
+# print('CHECK FACE DETECTION:\n', face_detection)
+
+
 model = tf.keras.models.Sequential([
   tf.keras.layers.Flatten(),
   tf.keras.layers.Dense(512, activation=tf.nn.relu),
@@ -46,7 +49,7 @@ while True:
     gray_image = cv2.cvtColor(bgr_image, cv2.COLOR_BGR2GRAY)
     rgb_image = cv2.cvtColor(bgr_image, cv2.COLOR_BGR2RGB)
     faces = detect_faces(face_detection, gray_image)
-    #print(faces)
+    print(faces)
     for face_coordinates in faces:
         print(face_coordinates)
         x1, x2, y1, y2 = apply_offsets(face_coordinates, emotion_offsets)

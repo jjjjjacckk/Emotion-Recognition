@@ -13,6 +13,10 @@ def load_detection_model(model_path):
     return detection_model
 
 def detect_faces(detection_model, gray_image_array):
+    # gray = cv2.cvtColor(gray_image_array, cv2.COLOR_BGR2GRAY)
+    # print(detection_model, gray_image_array)
+    # print('HERE:\n')
+    # print(detection_model.detectMultiScale(gray_image_array, 1.3, 5))
     return detection_model.detectMultiScale(gray_image_array, 1.3, 5)
 
 def draw_bounding_box(face_coordinates, image_array, color):
