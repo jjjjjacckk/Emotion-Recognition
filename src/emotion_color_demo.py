@@ -14,8 +14,8 @@ from utils.inference import load_detection_model
 from utils.preprocessor import preprocess_input
 
 # parameters for loading data and images
-detection_model_path = '../trained_models/detection_models/haarcascade_frontalface_default.xml'
-emotion_model_path = '../trained_models/emotion_models/fer2013_my_smallerCNN_new_trained.hdf5'
+detection_model_path = '../Emotion-Recognition/trained_models/detection_models/haarcascade_frontalface_default.xml'
+emotion_model_path = '../Emotion-Recognition/trained_models/emotion_models/fer2013_my_smallerCNN_new_trained.hdf5'
 emotion_labels = get_labels('fer2013')
 
 # hyper-parameters for bounding boxes shape
@@ -49,9 +49,9 @@ while True:
     gray_image = cv2.cvtColor(bgr_image, cv2.COLOR_BGR2GRAY)
     rgb_image = cv2.cvtColor(bgr_image, cv2.COLOR_BGR2RGB)
     faces = detect_faces(face_detection, gray_image)
-    print(faces)
+    print('FACE: ', faces)
     for face_coordinates in faces:
-        print(face_coordinates)
+        # print(face_coordinates)
         x1, x2, y1, y2 = apply_offsets(face_coordinates, emotion_offsets)
         gray_face = gray_image[y1:y2, x1:x2]
         try:
@@ -85,7 +85,7 @@ while True:
         elif emotion_text == 'Surprise':
             color = emotion_probability * np.asarray((0, 255, 255))
         else:
-            color = emotion_probability * np.asarray((0, 255, 0))
+            color = emotion_probability * np.asarray((255, 0, 0))
 
         color = color.astype(int)
         color = color.tolist()
