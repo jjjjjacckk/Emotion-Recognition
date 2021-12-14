@@ -30,7 +30,7 @@ Create a "datasets" folder and unzip the file under it:
         OSError: SavedModel file does not exist at: saved_model_dir/{saved_model.pbtxt|saved_model.pb}
         ```
     - Solution: Change path to abosolute path
-        > (e.g.) I put these files in 'Dekstop'
+        > (e.g.) I put these files in 'Desktop'
         ```python3=
         # change '../' to your computer path
         detection_model_path = '../Emotion-Recognition/trained_models/detection_models/haarcascade_frontalface_default.xml'
